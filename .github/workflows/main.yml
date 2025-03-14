@@ -1,0 +1,32 @@
+name: Basic CI Workflow
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push events for the main branch
+  push:
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs
+jobs:
+  # This is a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks
+    steps:
+      # Checks out your repository under $GITHUB_WORKSPACE
+      - uses: actions/checkout@v3
+
+      # Example step to print a greeting
+      - name: Print greeting
+        run: echo "Hello, GitHub Actions!"
+
+      # Example step showing environment info
+      - name: Show environment info
+        run: |
+          echo "Running on: ${{ runner.os }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
